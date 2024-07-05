@@ -3,7 +3,11 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import RegistroForm, ActualizacionCustomUserForm, EliminacionCustomUserForm, UserProfileForm,ProductoForm
 from .models import CustomUser ,Profile, Order, Producto
+from django.utils import timezone
 
+def admin_dashboard_view(request):
+    current_date = timezone.now().strftime("%d/%m/%Y %H:%M:%S")
+    return render(request, 'admin_dashboard.html', {'current_date': current_date})
 
 
 def registro_view(request):
